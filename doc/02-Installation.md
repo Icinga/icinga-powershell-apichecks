@@ -79,4 +79,4 @@ Afterwards our API endpoint is available and ready.
 
 ## API documentation
 
-As we are now ready and our service is restarted, we can start [using the API]()
+As we are now ready and our service is restarted, we can start [using the API](03-API-Documentation.md)
