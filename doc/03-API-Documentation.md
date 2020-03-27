@@ -47,9 +47,25 @@ For acually executing a check you will have to use the alias instead of the real
 
 The simplest way of executing a check is to use the GET method by directly using the browser for example. Simply use the `command` argument and specify the alias for the plugin to execute
 
+### Browser
+
 ```url
 /v1/checker?command=cpu
 ```
+
+### GET with curl
+
+```bash
+curl -X GET "/v1/checker?command=cpu"
+```
+
+### GET with PowerShell
+
+```powershell
+Invoke-WebRequest -Method GET -UseBasicParsing -Uri '/v1/checker?command=cpu';
+```
+
+### GET Output
 
 ```json
 {
@@ -71,9 +87,19 @@ The simplest way of executing a check is to use the GET method by directly using
 
 You can also send a request as `POST` with a JSON body attached to include arguments to your check. In our example we will use ``curl` for this
 
+### POST curl
+
 ```bash
- curl -X POST "/v1/checker?command=cpu" --data "{ '-Core': 0 }"
+curl -X POST "/v1/checker?command=cpu" --data "{ '-Core': 0 }" -H "Content-Type: application/json"
 ```
+
+### POST with PowerShell
+
+```powershell
+Invoke-WebRequest -Method POST -UseBasicParsing -Uri '/v1/checker?command=cpu' -Body "{ '-Core': 1 }" -ContentType 'application/json';
+```
+
+### POST Output
 
 ```json
 {
