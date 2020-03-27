@@ -3,7 +3,8 @@ function Invoke-IcingaApiChecksRESTCall()
     param (
         [Hashtable]$Request    = @{},
         [Hashtable]$Connection = @{},
-        $IcingaGlobals
+        $IcingaGlobals,
+        [string]$ApiVersion    = $null
     );
 
     # Initialise some global variables we use to actually store check result data from
@@ -30,6 +31,16 @@ function Invoke-IcingaApiChecksRESTCall()
         return;
     }
 
+    if ((Get-IcingaRESTHeaderValue -Request $Request -Header 'Content-Type') -ne 'application/json' -And $Request.Method -eq 'POST') {
+        Send-IcingaTCPClientMessage -Message (
+            New-IcingaTCPClientRESTMessage `
+                -HTTPResponse ($IcingaHTTPEnums.HTTPResponseType.'Bad Request') `
+                -ContentBody 'This API endpoint does only accept "application/json" as content type over POST.'
+        ) -Stream $Connection.Stream;
+
+        return;
+    }
+
     # Our namespace to include inventory packages is 'include' over the api
     # Everything else will be dropped for the moment
     if ($Request.RequestArguments.ContainsKey('command')) {
@@ -40,7 +51,7 @@ function Invoke-IcingaApiChecksRESTCall()
 
                 Write-IcingaDebugMessage -Message ('Executing API check for command: ' + $command);
 
-                if ([string]::IsNullOrEmpty($CheckConfig) -eq $FALSE) {
+                if ([string]::IsNullOrEmpty($CheckConfig) -eq $FALSE -And $Request.Method -eq 'POST') {
                     # Convert our JSON config for checks to a PSCustomObject
                     $PSArguments = ConvertFrom-Json -InputObject $CheckConfig;
 
@@ -59,8 +70,14 @@ function Invoke-IcingaApiChecksRESTCall()
                     };
 
                     $ExitCode = Invoke-Command -ScriptBlock { return &$command @Arguments };
-                } else {
+                } elseif ($Request.Method -eq 'GET') {
                     $ExitCode = Invoke-Command -ScriptBlock { return &$command };
+                } else {
+                    $ContentResponse.Add(
+                        'message',
+                        'This API endpoint does only accept GET and POST methods for requests.'
+                    );
+                    break;
                 }
 
                 # Once the check is executed, the plugin output and the performance data are stored
@@ -76,6 +93,10 @@ function Invoke-IcingaApiChecksRESTCall()
                         'checkresult' = $CheckResult;
                         'perfdata'    = $PerfData;
                     } | Out-Null;
+
+                # We only support to execute one check per call
+                # No need to loop through everything
+                break;
             }
         }
     }
