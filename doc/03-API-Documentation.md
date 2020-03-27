@@ -87,7 +87,7 @@ Invoke-WebRequest -Method GET -UseBasicParsing -Uri '/v1/checker?command=cpu';
 
 You can also send a request as `POST` with a JSON body attached to include arguments to your check. In our example we will use ``curl` for this
 
-### POST curl
+### POST with curl
 
 ```bash
 curl -X POST "/v1/checker?command=cpu" --data "{ '-Core': 0 }" -H "Content-Type: application/json"
