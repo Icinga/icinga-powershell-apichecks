@@ -43,7 +43,14 @@ function Invoke-IcingaApiChecksRESTCall()
 
     # Our namespace to include inventory packages is 'include' over the api
     # Everything else will be dropped for the moment
-    if ($Request.RequestArguments.ContainsKey('command')) {
+    if ($Request.RequestArguments.ContainsKey('list')) {
+
+        Add-IcingaHashtableItem `
+            -Hashtable $ContentResponse `
+            -Key 'Commands' `
+            -Value $CheckerAliases | Out-Null;
+
+    } elseif ($Request.RequestArguments.ContainsKey('command')) {
         foreach ($element in $CheckerAliases.Keys) {
             if ($Request.RequestArguments.command -Contains $element) {
 
