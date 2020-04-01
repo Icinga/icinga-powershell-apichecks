@@ -28,7 +28,7 @@ Install-Module 'icinga-powershell-apichecks';
 
 ### Icinga Framework Component Installer
 
-If PowerShell Gallery is no option for you because it is not available or you prefer the installation from GitHub releases directly, you can use the component installer of the Icinga PowerShell Framework
+If PowerShell Gallery is no option for you because it is not available or you prefer the installation from GitHub releases directly, you can use the component installer of the Icinga PowerShell Framework which was introduced with `v1.1.0`:
 
 Install latest stable:
 
