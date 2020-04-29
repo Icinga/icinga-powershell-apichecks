@@ -55,7 +55,27 @@ Install-IcingaFrameworkComponent -Name apichecks -Url 'url to your .zip file';
 
 For manual installation either download the [latest release .zip](https://github.com/Icinga/icinga-powershell-apichecks/releases) or the [latest master .zip](https://github.com/Icinga/icinga-powershell-apichecks) and extract the content into the correct PowerShell modules folder.
 
-Please ensure that the folder name of the module is matching the `.psm1` file name inside the folder. Once this is done, we might require to unblock the file content to be able to load and execute the module
+This could for example be:
+
+```powershell
+C:\Program Files\WindowsPowerShell\Modules
+```
+
+Please ensure that the folder name of the module is matching the `.psm1` file name inside the folder.
+
+By downloading the latest master and unzipping it into above mentioned folder, you might end up like this:
+
+```powershell
+C:\Program Files\WindowsPowerShell\Modules\icinga-powershell-apichecks-master
+```
+
+As our `.psm1` file is named `icinga-powershell-apichecks.psm1` we will have to rename the folder to look like this:
+
+```powershell
+C:\Program Files\WindowsPowerShell\Modules\icinga-powershell-apichecks
+```
+
+Once this is done, we might require to unblock the file content to be able to load and execute the module
 
 ```powershell
 Get-Content -Path 'C:\Program Files\WindowsPowerShell\Modules\icinga-powershell-apichecks' -Recurse | Unblock-File;
