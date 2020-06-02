@@ -11,6 +11,7 @@ Please take a look on the following content for installation and documentation:
 * [Introduction](doc/01-Introduction.md)
 * [Installation Guide](doc/02-Installation.md)
 * [API documentation](doc/03-API-Documentation.md)
+* [Changelog](doc/31-Changelog.md)
 
 ## Contributing
 
