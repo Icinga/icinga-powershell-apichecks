@@ -61,7 +61,7 @@ function Register-IcingaRESTApiCommandAliasesApiChecks()
             'nla'         = 'Invoke-IcingaCheckNLA';
             'perfcounter' = 'Invoke-IcingaCheckPerfcounter';
             'process'     = 'Invoke-IcingaCheckProcessCount';
-            'service'     = 'Invoke-IcingaCheckServices';
+            'service'     = 'Invoke-IcingaCheckService';
             'updates'     = 'Invoke-IcingaCheckUpdates';
             'uptime'      = 'Invoke-IcingaCheckUptime';
             'partition'   = 'Invoke-IcingaCheckUsedPartitionSpace';
