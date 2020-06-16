@@ -6,7 +6,7 @@ Please read the [upgrading](30-Upgrading-API-Checks.md) documentation before upg
 
 Released closed milestones can be found on [GitHub](https://github.com/Icinga/icinga-powershell-apichecks/milestones?state=closed).
 
-## 1.0.1 (pending)
+## 1.0.1 (2020-06-16)
 
 ### Bugfixes
 
