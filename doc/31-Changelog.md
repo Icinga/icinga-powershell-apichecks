@@ -6,6 +6,14 @@ Please read the [upgrading](30-Upgrading-API-Checks.md) documentation before upg
 
 Released closed milestones can be found on [GitHub](https://github.com/Icinga/icinga-powershell-apichecks/milestones?state=closed).
 
+## 1.1.0 (2021-03-02)
+
+[Issue and PRs](https://github.com/Icinga/icinga-powershell-apichecks/milestone/2?closed=1)
+
+### Enhancements
+
+* [#2](https://github.com/Icinga/icinga-powershell-apichecks/pull/2) Removes the enforcing feature to provide alias mapping for Cmdlets (like `Invoke-IcingaCheckCPU` => `cpu`) and replaced the entire handling with proper white-/blacklisting entries for each API endpoint.
+
 ## 1.0.1 (2020-06-16)
 
 ### Bugfixes

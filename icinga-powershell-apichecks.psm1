@@ -32,7 +32,6 @@ function Register-IcingaRESTAPIEndpointAPIChecks()
 .DESCRIPTION
    This module will provide an endpoint for the Icinga for Windows REST-Api
    https://github.com/Icinga/icinga-powershell-restapi
-
    By using the references, we can register endpoints and aliases to fetch
    informations
 .EXAMPLE
