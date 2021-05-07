@@ -76,21 +76,17 @@ function Invoke-IcingaApiChecksRESTCall()
             # Convert our JSON config for checks to a PSCustomObject
             $PSArguments = ConvertFrom-Json -InputObject $CheckConfig;
 
-            # For executing the checks, we will require the data as
-            # hashtable, so declare it here
-            [hashtable]$Arguments = @{};
-
             # Now convert our custom object by Key<->Value to
-            # a valid hashtable, allowing us to parse arguments
+            # a valid argument list, allowing us to bind arguments
             # to our check command
+            [array]$Arguments = @($ExecuteCommand);
             $PSArguments.PSObject.Properties | ForEach-Object { 
-                Add-IcingaHashtableItem `
-                    -Hashtable $Arguments `
-                    -Key $_.Name `
-                    -Value $_.Value | Out-Null;
+                 $Arguments += ,('-' + $_.Name);
+                 if (-not ([string]::IsNullOrEmpty($_.Value))) { $Arguments += ,$_.Value };
             };
 
-            $ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand @Arguments };
+            $CmdScriptBlock = [scriptblock]::Create($Arguments -join " ");
+            $ExitCode = Invoke-Command -ScriptBlock $CmdScriptBlock;
         } elseif ($Request.Method -eq 'GET') {
             $ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand };
         } else {
