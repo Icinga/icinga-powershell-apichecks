@@ -6,6 +6,14 @@ Please read the [upgrading](30-Upgrading-API-Checks.md) documentation before upg
 
 Released closed milestones can be found on [GitHub](https://github.com/Icinga/icinga-powershell-apichecks/milestones?state=closed).
 
+## 1.2.0 (2021-03-02)
+
+[Issue and PRs](https://github.com/Icinga/icinga-powershell-apichecks/milestone/3?closed=1)
+
+### Bugfixes
+
+* [#7](https://github.com/Icinga/icinga-powershell-apichecks/pull/7) The Cmdlet being used to test if certain commands can be executed or not, was wrong and has been replaced, which will now cause an exception for the REST-Api daemon.
+
 ## 1.1.0 (2021-03-02)
 
 [Issue and PRs](https://github.com/Icinga/icinga-powershell-apichecks/milestone/2?closed=1)
