@@ -60,7 +60,7 @@ function Invoke-IcingaApiChecksRESTCall()
             [string]$ExecuteCommand = $Request.RequestArguments.command;
         }
 
-        if ((Test-IcingaFrameworkApiCommand -Command $ExecuteCommand -Endpoint 'apichecks') -eq $FALSE) {
+        if ((Test-IcingaRESTApiCommand -Command $ExecuteCommand -Endpoint 'apichecks') -eq $FALSE) {
             Send-IcingaTCPClientMessage -Message (
                 New-IcingaTCPClientRESTMessage `
                     -HTTPResponse ($IcingaHTTPEnums.HTTPResponseType.'Forbidden') `
