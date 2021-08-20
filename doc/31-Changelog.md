@@ -13,6 +13,7 @@ Released closed milestones can be found on [GitHub](https://github.com/Icinga/ic
 ### Bugfixes
 
 * [#5](https://github.com/Icinga/icinga-powershell-apichecks/issues/5) Fixes performance data for executed checks, which did not return an empty array if no data was available or perf data were disabled
+* [#6](https://github.com/Icinga/icinga-powershell-apichecks/issues/6) Fixes exit code to always return an integer and in case not being used, always 3 for `UNKNOWN` in Icinga context
 
 ## 1.1.1 (2021-07-07)
 

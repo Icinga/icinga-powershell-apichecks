@@ -17,6 +17,7 @@ function Invoke-IcingaApiChecksRESTCall()
     # Short our call
     $CheckerAliases = $IcingaGlobals.BackgroundDaemon.IcingaPowerShellRestApi.CommandAliases.checker;
     $CheckConfig    = $Request.Body;
+    [int]$ExitCode  = 3; #Unknown
 
     # Check if there are an inventory aliases configured
     # This should be maintained by the developer and not occur
@@ -90,9 +91,9 @@ function Invoke-IcingaApiChecksRESTCall()
                     -Value $_.Value | Out-Null;
             };
 
-            $ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand @Arguments };
+            [int]$ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand @Arguments };
         } elseif ($Request.Method -eq 'GET') {
-            $ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand };
+            [int]$ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand };
         } else {
             Send-IcingaTCPClientMessage -Message (
                 New-IcingaTCPClientRESTMessage `
