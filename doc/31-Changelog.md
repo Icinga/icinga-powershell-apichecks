@@ -6,9 +6,13 @@ Please read the [upgrading](30-Upgrading-API-Checks.md) documentation before upg
 
 Released closed milestones can be found on [GitHub](https://github.com/Icinga/icinga-powershell-apichecks/milestones?state=closed).
 
-## 1.2.0 (2021-03-02)
+## 1.2.0 (2021-09-07)
 
 [Issue and PRs](https://github.com/Icinga/icinga-powershell-apichecks/milestone/3?closed=1)
+
+### Bugfixes
+
+* [#5](https://github.com/Icinga/icinga-powershell-apichecks/issues/5) Fixes performance data for executed checks, which did not return an empty array if no data was available or perf data were disabled
 
 ## 1.1.1 (2021-07-07)
 

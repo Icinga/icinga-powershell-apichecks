@@ -105,8 +105,13 @@ function Invoke-IcingaApiChecksRESTCall()
 
         # Once the check is executed, the plugin output and the performance data are stored
         # within a special cache map we can use for accessing
-        $CheckResult = Get-IcingaCheckSchedulerPluginOutput;
-        $PerfData    = Get-IcingaCheckSchedulerPerfData;
+        $CheckResult     = Get-IcingaCheckSchedulerPluginOutput;
+        [array]$PerfData = Get-IcingaCheckSchedulerPerfData;
+
+        # Ensure our PerfData variable is always an array
+        if ($null -eq $PerfData -Or $PerfData.Count -eq 0) {
+            [array]$PerfData = @();
+        }
 
         # Free our memory again
         Clear-IcingaCheckSchedulerEnvironment;
