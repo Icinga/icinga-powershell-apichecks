@@ -7,6 +7,8 @@ function Invoke-IcingaApiChecksRESTCall()
         [string]$ApiVersion    = $null
     );
 
+    $Global:IcingaDaemonData = $IcingaGlobals;
+
     # Initialise some global variables we use to actually store check result data from
     # plugins properly. This is doable from each thread instance as this part isn't
     # shared between daemons
@@ -91,9 +93,9 @@ function Invoke-IcingaApiChecksRESTCall()
                     -Value $_.Value | Out-Null;
             };
 
-            [int]$ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand @Arguments };
+            [int]$ExitCode = & $ExecuteCommand @Arguments;
         } elseif ($Request.Method -eq 'GET') {
-            [int]$ExitCode = Invoke-Command -ScriptBlock { return &$ExecuteCommand };
+            [int]$ExitCode = & $ExecuteCommand;
         } else {
             Send-IcingaTCPClientMessage -Message (
                 New-IcingaTCPClientRESTMessage `
