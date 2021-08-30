@@ -15,6 +15,10 @@ Released closed milestones can be found on [GitHub](https://github.com/Icinga/ic
 * [#5](https://github.com/Icinga/icinga-powershell-apichecks/issues/5) Fixes performance data for executed checks, which did not return an empty array if no data was available or perf data were disabled
 * [#6](https://github.com/Icinga/icinga-powershell-apichecks/issues/6) Fixes exit code to always return an integer and in case not being used, always 3 for `UNKNOWN` in Icinga context
 
+### Enhancements
+
+* [#8](https://github.com/Icinga/icinga-powershell-apichecks/pull/8) Adds support for Api-Checks to work in JEA context
+
 ## 1.1.1 (2021-07-07)
 
 [Issue and PRs](https://github.com/Icinga/icinga-powershell-apichecks/milestone/4?closed=1)
