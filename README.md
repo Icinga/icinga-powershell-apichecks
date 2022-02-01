@@ -1,3 +1,13 @@
+# Deprecation Notice
+
+This repository is deprecated and no longer required, as starting with Icinga for Windows v1.7.0 the Api-Checks component is a core module of the [icinga-powershell-framework](https://github.com/Icinga/icinga-powershell-framework) and natively included.
+
+If you have Icinga for Windows v1.7.0 or later installed, you can uninstall the component by using
+
+```powershell
+Uninstall-IcingaComponent -Name 'apichecks'
+```
+
 # Icinga PowerShell API-Checks
 
 This repository provides an API endpoint for the [Icinga PowerShell REST-Api](https://github.com/Icinga/icinga-powershell-restapi) to execute checks provided by the [Icinga PowerShell Plugins](https://github.com/Icinga/icinga-powershell-plugins) or from custom development based on the [Icinga PowerShell Framework](https://github.com/Icinga/icinga-powershell-framework).
